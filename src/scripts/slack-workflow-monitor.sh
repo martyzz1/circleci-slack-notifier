@@ -303,6 +303,8 @@ RunWorkflowMonitor() {
         if [ "$JOB_NUMBER" = "$CIRCLE_BUILD_NUM" ];
         then
           echo "This is the reporter job. Skipping"
+		elif [[ "$JOB_NAME" == *"slack-monitor"* ]]; then
+    	  echo "Job name $JOB_NAME contains slack-monitor. Skipping."
         else
           # If this job is NOT the current job, check the status
           echo "JOB: $JOB_NAME"
